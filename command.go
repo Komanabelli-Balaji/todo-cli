@@ -50,13 +50,13 @@ func (cf *CmdFlags) Execute(todos *Todos) {
 			os.Exit(1)
 		}
 
-		todos.edit(index, parts[1])
+		todos.edit(index - 1, parts[1])
 
 	case cf.Toggle != -1:
-		todos.toggle(cf.Toggle)
+		todos.toggle(cf.Toggle - 1)
 
 	case cf.Del != -1:
-		todos.delete(cf.Del)
+		todos.delete(cf.Del - 1)
 
 	default:
 		fmt.Println("Invalid command")

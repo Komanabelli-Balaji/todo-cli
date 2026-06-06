@@ -84,7 +84,13 @@ func (todos *Todos) print() {
 	table := table.New(os.Stdout)
 
 	table.SetRowLines(false)
-	table.SetHeaders("#", "Title", "Completed", "Created At", "Completed At")
+	table.SetHeaders(
+		"#",
+		"Title", 
+		"Completed", 
+		"Created At", 
+		"Completed At",
+	)
 
 	for index, t := range *todos {
 		completed := "❌"
@@ -97,7 +103,13 @@ func (todos *Todos) print() {
 			}
 		}
 
-		table.AddRow(strconv.Itoa(index), t.Title, completed, t.CreatedAt.Format(time.RFC1123), completedAt)
+		table.AddRow(
+			strconv.Itoa(index + 1), 
+			t.Title, 
+			completed, 
+			t.CreatedAt.Format(time.RFC1123), 
+			completedAt,
+		)
 	}
 
 	table.Render()
