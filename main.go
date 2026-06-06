@@ -5,10 +5,8 @@ func main() {
 	storage := NewStorage[Todos]("todos.json")
 	storage.Load(&todos)
 
-	todos.add("Add some features")
-	todos.add("Finish the project")
-	todos.toggle(0)
-	todos.print()
+	cmdFlags := NewCmdFlag()
+	cmdFlags.Execute(&todos)
 
 	storage.Save(todos)
 }
